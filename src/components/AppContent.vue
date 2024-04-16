@@ -6,6 +6,9 @@
             return{
                 store,
                 test: 'Hello!',
+                languagesSrc: ['it','en','ja','de'],
+                languageSrc: '',
+                languageFlag: true,
             }
         },
 
@@ -14,13 +17,9 @@
         },
 
         methods: {
-            getFilmTitle(index){
-                const filmList = this.store.filmList
-
-                for(let i = 1; i < filmList.length; i++){
-                    filmList[index].title
-                }
-            }
+            testFunction(){                
+                console.log('test')
+            },
         }
     }
 </script>
@@ -38,7 +37,11 @@
                             <li>
                                 <span>Titolo Originale: </span> {{ film.original_title }}
                             </li>
-                            <li>
+                            <li v-if="this.languagesSrc.includes(film.original_language) === true">
+                                
+                                <span>Lingua: </span> <img :src="`/languages/${film.original_language}.png`" alt="">
+                            </li>
+                            <li v-else>                                
                                 <span>Lingua: </span> {{ film.original_language }}
                             </li>
                             <li>
@@ -61,8 +64,13 @@
         span{
             font-size: 19px;
             font-weight: bold;
-            color: wheat;
-        }
+            color: wheat;           
+        };
+
+        img{
+            max-height: 20px;
+            margin-left: 10px
+        };
     }
   }
 </style>
