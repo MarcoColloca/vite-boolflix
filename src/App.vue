@@ -16,39 +16,42 @@
     data(){
       return{
         store,
+        /* fallinento
         apiParam: {
           key: '4f9eb075064279ac9303fb02f9122eca',
           query: store.searchBar,
         },
-
+        */
+        key: '4f9eb075064279ac9303fb02f9122eca',
         test: 'Hello!',
       }
     },
 
     mounted(){
-      this.fetchData()
+      
     },
 
 
-    methods:{
+    methods: {
       fetchData(){
         axios.get('https://api.themoviedb.org/3/search/movie',{
           params:{
-            api_key: this.apiParam.key,
-            query: this.apiParam.query
+            api_key: this.key,
+            query: this.store.searchBar
           }
         }).then((res) => {
-          const data  = res.data
-          const results = data.results
+          let data  = res.data;
+          let results = data.results;
+          console.log(results);
 
-          this.store.filmList = results
+          this.store.filmList = results;
         })
       },
-
+      
       testFunction(){
-        console.log(store.filmList)
+        console.log('test')
       }
-    }
+    },
   }
 </script>
 
@@ -57,7 +60,7 @@
 <template>
 
   <AppHeader
-   @search="fetchData(), testFunction()"
+   @search="fetchData()"
   ></AppHeader>
   
   <AppContent></AppContent>
