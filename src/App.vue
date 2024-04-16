@@ -33,18 +33,33 @@
 
 
     methods: {
-      fetchData(){
-        axios.get('https://api.themoviedb.org/3/search/movie',{
+      fetchData(){       
+
+        const promise1 = axios.get('https://api.themoviedb.org/3/search/movie',{
+          params:{
+            api_key: this.key,
+            query: this.store.searchBar
+          }                   
+        })
+
+        const promise2 = axios.get('https://api.themoviedb.org/3/search/tv',{
           params:{
             api_key: this.key,
             query: this.store.searchBar
           }
-        }).then((res) => {
-          let data  = res.data;
-          let results = data.results;
-          console.log(results);
+        })
 
-          this.store.filmList = results;
+        const promises = [promise1, promise2];
+
+        Promise.all(promises)
+        .then((results) => {
+          
+          console.log(this.store.filmList);
+          console.log(this.store.tvList);
+          
+          this.store.filmList = results[0].data.results;
+          this.store.tvList = results[1].data.results;
+          
         })
       },
       
