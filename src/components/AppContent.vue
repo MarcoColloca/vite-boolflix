@@ -7,8 +7,6 @@
                 store,
                 test: 'Hello!',
                 languagesSrc: ['it','en','ja','de'],
-                languageSrc: '',
-                languageFlag: true,
             }
         },
 
