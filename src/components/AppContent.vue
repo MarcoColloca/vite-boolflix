@@ -28,7 +28,7 @@
 </script>
 
 <template>
-    <div class="content-section">
+    <div class="film-section" v-if="store.currentPage.film === true">
         <div class="container">,
             <div class="row">
                 <div class="col-4" v-for="(film, i) in this.store.filmList">
@@ -42,6 +42,24 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div v-else class="tv-section">
+        
+        <div class="container">,
+            <div class="row">
+                <div class="col-4" v-for="(tv, i) in this.store.tvList">
+                    <AppCard
+                     :title="tv.name"
+                     :originalTitle="tv.original_name" 
+                     :language="tv.original_language"
+                     :languagesSrc="this.languagesSrc"
+                     :vote="tv.vote_average"
+                    ></AppCard>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </template>
 

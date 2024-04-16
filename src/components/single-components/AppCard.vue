@@ -44,6 +44,10 @@
 </template>
 
 <style lang="scss">
+    .card{
+        border: 1px solid red;
+    }
+
     .card__description{
         color: white;
         margin: 50px 0;
