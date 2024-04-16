@@ -1,3 +1,17 @@
 body{
     background-color: rgb(35, 35, 35);
 }
+
+.container{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-4{
+    width: calc(100%/12*4);
+}
