@@ -1,21 +1,65 @@
 <script>
-  export default{
-    data(){
-      return{
-        test: 'Hello!',
-      }
+    import { store } from '../store';
+
+    export default{
+        data(){
+        return{
+            store,
+            logo: 'Boolflix',
+        }
+        }
     }
-  }
 </script>
 
+
+
 <template>
-  <h1>
-    {{ test }}
-  </h1>
+  <div class="header-section">
+    <div class="header-section__logo">        
+        <h1>{{ logo }}</h1>
+    </div>
+
+    <div class="header-section__SearchBox">
+        <input 
+         type="text" 
+         placeholder="Nome Film"
+         v-model="this.store.searchBar"
+        >
+
+
+        <button>Cerca</button>
+    </div>
+
+  </div>
 </template>
 
+
+
 <style lang="scss">
-  h1{
-    color: white;
-  }
+    .header-section{
+        background-color: coral;
+        height: 70px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header-section__SearchBox{
+        display: flex;
+        input{
+            margin-right: 15px;
+            padding: 5px 11px;
+        }
+
+        button{
+            padding: 5px 11px;
+            background-color: black;
+            color: coral;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
 </style>
