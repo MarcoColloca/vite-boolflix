@@ -2,11 +2,15 @@
   import {store} from './store'
   import axios from 'axios'
 
+  /* componenti importati */
   import AppHeader from './components/AppHeader.vue'
+  import AppContent from './components/AppContent.vue'
+
 
   export default{
     components:{
       AppHeader,
+      AppContent,
     },
 
     data(){
@@ -18,13 +22,10 @@
         },
 
         test: 'Hello!',
-
       }
     },
 
     mounted(){
-      console.log(store),
-
       this.fetchData()
     },
 
@@ -40,8 +41,12 @@
           const data  = res.data
           const results = data.results
 
-          this.store.filmList = results          
+          this.store.filmList = results
         })
+      },
+
+      testFunction(){
+        console.log(store.filmList)
       }
     }
   }
@@ -51,11 +56,12 @@
 
 <template>
 
-  <AppHeader></AppHeader>
+  <AppHeader
+   @search="fetchData(), testFunction()"
+  ></AppHeader>
   
-  <h1>
-    {{ test }}
-  </h1>
+  <AppContent></AppContent>
+
 </template>
 
 

@@ -26,8 +26,11 @@
          v-model="this.store.searchBar"
         >
 
-
-        <button>Cerca</button>
+        <button
+        @click="$emit('search')"
+        >
+            Cerca
+        </button>
     </div>
 
   </div>
