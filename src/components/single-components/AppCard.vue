@@ -20,7 +20,7 @@
         methods:{
             getFullStars(propsVote){
                 
-                const fullStars = Math.round(propsVote/2)
+                const fullStars = Math.floor(propsVote/2)
                 
                 return fullStars
             },
@@ -30,7 +30,20 @@
                 const emptyStars = 5 - Math.round(propsVote/2)
 
                 return emptyStars
-            }
+            },
+
+            hasHalfStar(propsVote){
+                const halfVote = propsVote/2
+                const roundVote = parseInt(propsVote/2)
+                const result = halfVote - roundVote
+                
+                if(result >= 0.5){
+                    return true
+                }else{
+                    return false
+                }
+                                
+            },
         }
 
     }
@@ -57,9 +70,12 @@
                     <!-- Stelle piene -->                    
                     <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" v-for="star in getFullStars(vote)"/>
 
+                    <!-- Mezza Stella -->
+                    <font-awesome-icon :icon="['far', 'star-half-stroke']" style="color: #FFD43B;" v-show="hasHalfStar(vote) === true"/>
+                    
                     <!-- Stelle vuote -->
                     <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="star in getEmptyStars(vote)"/>
-                </span>
+                </span>                
             </li>
         </ul>
     </div>
