@@ -54,12 +54,12 @@
         Promise.all(promises)
         .then((results) => {
           
-          console.log(this.store.filmList);
-          console.log(this.store.tvList);
           
           this.store.filmList = results[0].data.results;
           this.store.tvList = results[1].data.results;
           
+          console.log(this.store.filmList[0]);
+          console.log(this.store.tvList[0]);
         })
       },
       

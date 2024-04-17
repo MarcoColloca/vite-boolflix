@@ -1,10 +1,12 @@
 <script>
     import {store} from '../store'
     import AppCard from './single-components/AppCard.vue'
+    import CardCover from './single-components/CardCover.vue'
 
     export default{
         components:{
             AppCard,
+            CardCover,
         },
 
         data(){
@@ -39,13 +41,18 @@
                      :languagesSrc="this.languagesSrc"
                      :vote="film.vote_average"
                     ></AppCard>
+
+
+                    <CardCover
+                     :poster="film.poster_path"
+                    ></CardCover>
                 </div>
             </div>
         </div>
     </div>
 
-    <div v-else class="tv-section">
-        
+    
+    <div v-else class="tv-section">        
         <div class="container">,
             <div class="row">
                 <div class="col-4" v-for="(tv, i) in this.store.tvList">
@@ -56,6 +63,11 @@
                      :languagesSrc="this.languagesSrc"
                      :vote="tv.vote_average"
                     ></AppCard>
+
+
+                    <CardCover
+                     :poster="tv.poster_path"
+                    ></CardCover>
                 </div>
             </div>
         </div>
