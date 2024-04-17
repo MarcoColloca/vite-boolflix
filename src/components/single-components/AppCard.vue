@@ -15,7 +15,24 @@
                 test: 'Hello!',
                 store,
             }
+        },
+
+        methods:{
+            getFullStars(propsVote){
+                
+                const fullStars = Math.round(propsVote/2)
+                
+                return fullStars
+            },
+
+            getEmptyStars(propsVote){
+
+                const emptyStars = 5 - Math.round(propsVote/2)
+
+                return emptyStars
+            }
         }
+
     }
 </script>
 
@@ -36,7 +53,14 @@
                 <span>Lingua: </span> {{ language }}
             </li>
             <li>
-                <span>Voto: </span> {{ vote }} <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" /> <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" />
+                <span>
+                    Voto:
+                    <!-- Stelle piene -->                    
+                    <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" v-for="star in getFullStars(vote)"/>
+
+                    <!-- Stelle vuote -->
+                    <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="star in getEmptyStars(vote)"/>
+                </span>
             </li>
         </ul>
     </div>

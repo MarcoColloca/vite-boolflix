@@ -46,10 +46,11 @@
          type="text" 
          placeholder="Nome Film"
          v-model="this.store.searchBar"
+         @keyup.enter="$emit('search')"
         >
 
         <button
-        @click="$emit('search')"
+         @click="$emit('search')"         
         >
             Cerca
         </button>
