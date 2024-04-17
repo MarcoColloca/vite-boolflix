@@ -45,8 +45,7 @@
             <li>
                 <span>Titolo Originale: </span> {{ originalTitle }}
             </li>
-            <li v-if="languagesSrc.includes(language) === true">
-                
+            <li v-if="languagesSrc.includes(language) === true">                
                 <span>Lingua: </span> <img :src="`/languages/${language}.png`" alt="">
             </li>
             <li v-else>                                

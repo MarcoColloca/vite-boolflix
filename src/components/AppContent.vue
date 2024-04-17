@@ -30,7 +30,7 @@
         <h1 class="title"> Sezione Film </h1>
         <div class="container">,
             <div class="row">
-                <div class="col-4" v-for="(film, i) in this.store.filmList">
+                <div class="col-4" v-for="(film, i) in this.store.filmList" :key="film.id">
                     <div class="film-section__card-conteiner">
                         <AppCard
                          :title="film.title"
@@ -56,7 +56,7 @@
         <h1 class="title"> Sezione Serie Tv </h1>
         <div class="container">,
             <div class="row">
-                <div class="col-4" v-for="(tv, i) in this.store.tvList">
+                <div class="col-4" v-for="(tv, i) in this.store.tvList" :key="tv.id">
                     <div class="tv-section__card-conteiner">
                         <AppCard
                          :title="tv.name"
