@@ -27,6 +27,7 @@
 
 <template>
     <div class="film-section" v-if="store.currentPage.film === true">
+        <h1 class="title"> Sezione Film </h1>
         <div class="container">,
             <div class="row">
                 <div class="col-4" v-for="(film, i) in this.store.filmList">
@@ -51,7 +52,8 @@
     </div>
 
     
-    <div v-else class="tv-section">        
+    <div v-else class="tv-section">
+        <h1 class="title"> Sezione Serie Tv </h1>
         <div class="container">,
             <div class="row">
                 <div class="col-4" v-for="(tv, i) in this.store.tvList">
@@ -78,10 +80,27 @@
 </template>
 
 <style lang="scss">
+    .film-section,
+    .tv-section{
+        .row{
+            row-gap: 100px;
+        }
+
+    }
+
+
     .film-section__card-conteiner, 
     .tv-section__card-conteiner{
         width: 342px;
         height: 513px;
         position: relative;
+    }
+
+
+    .title{
+        color: white;
+        margin: 50px 0;
+        font-size: 32px;
+        text-align: center;
     }
 </style>

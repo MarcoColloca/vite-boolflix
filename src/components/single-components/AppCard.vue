@@ -69,16 +69,16 @@
 
 <style lang="scss">
     .card{
-        border: 1px solid red;
+        background-color: black;
         width: 342px;
         height: 513px;
     }
 
     .card__description{
         color: white;
-        margin: 50px 0;
+        padding: 50px;
         li{
-            margin: 5px;
+            margin: 20px 5px;
             span{
                 font-size: 19px;
                 font-weight: bold;

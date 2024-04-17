@@ -75,10 +75,11 @@
     .header-section__navbar{
         display: flex;
         li{
-            margin: 10px;
+            margin: 0 25px;
             font-weight: bold;
             color: white;
             cursor: pointer;
+            font-size: 24px;
         }
     }
 
