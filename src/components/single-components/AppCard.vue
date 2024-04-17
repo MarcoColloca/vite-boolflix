@@ -46,7 +46,6 @@
 <style lang="scss">
     .card{
         border: 1px solid red;
-        position: relative;
         width: 342px;
         height: 513px;
     }
