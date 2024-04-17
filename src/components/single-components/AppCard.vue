@@ -8,12 +8,14 @@
             language: String,
             languagesSrc: Array,
             vote: Number,
+            cardIndex: Number,
         },
 
         data(){
             return{
                 test: 'Hello!',
                 store,
+                show: false,
             }
         },
 
@@ -44,13 +46,29 @@
                 }
                                 
             },
+
+
+            toggleDescription(index){
+
+                for(let i = 0; i < this.store.filmList.length; i++){
+                    if(i === index && this.show === true){
+                        return 'show'
+                    }
+                }
+            },
+
+
+            toggleClassShow(){
+                this.show = !this.show    
+            },
+
         }
 
     }
 </script>
 
 <template>
-    <div class="card">                       
+    <div class="card" :class="toggleDescription(cardIndex)" @mouseenter="toggleClassShow()" @mouseleave="toggleClassShow()">                       
         <ul class="card__description">
             <li>
                 <span>Titolo: </span> {{ title }}
@@ -87,6 +105,12 @@
         background-color: black;
         width: 342px;
         height: 513px;
+        position: absolute;
+        opacity: 0;
+    }
+
+    .card.show{
+        opacity: 1;
     }
 
     .card__description{

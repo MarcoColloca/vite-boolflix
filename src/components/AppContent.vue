@@ -38,12 +38,12 @@
                          :language="film.original_language"
                          :languagesSrc="this.languagesSrc"
                          :vote="film.vote_average"
+                         :cardIndex="i"
                         ></AppCard>
     
     
                         <CardCover
                          :poster="film.poster_path"
-                         :cardIndex="i"
                         ></CardCover>
                     </div>                
                 </div>
@@ -64,12 +64,12 @@
                          :language="tv.original_language"
                          :languagesSrc="this.languagesSrc"
                          :vote="tv.vote_average"
+                         :cardIndex="i"
                         ></AppCard>
     
     
                         <CardCover
                          :poster="tv.poster_path"
-                         :cardIndex="i"
                         ></CardCover>
                     </div>
                 </div>
