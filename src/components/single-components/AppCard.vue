@@ -36,7 +36,7 @@
                 <span>Lingua: </span> {{ language }}
             </li>
             <li>
-                <span>Voto: </span> {{ vote }}
+                <span>Voto: </span> {{ vote }} <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" /> <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" />
             </li>
         </ul>
     </div>
