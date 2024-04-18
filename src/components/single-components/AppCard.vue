@@ -142,6 +142,7 @@
             <!-- Componente Card Details -->
             <CardDetails
              :open="this.isOpen"
+             @closeModal="this.isOpen = false"
             ></CardDetails>
         </ul>
     </div>
