@@ -66,13 +66,13 @@
         <div :class="toggleClassAppear()" class="details-section__film appear" v-if="store.currentPage.film === true">
             <ul class="film-actor-list">
                 <h2>Lista Attori: </h2>
-                <li v-for="actor in maximumActors(this.store.filmActors, 5)">
+                <li v-for="actor in maximumActors(this.store.actors, 5)">
                     {{ actor }}
                 </li>
             </ul>
             <ul class="film-genre-list">
                 <h2>Lista Generi: </h2>
-                <li v-for="genre in this.store.filmGenres">
+                <li v-for="genre in this.store.genres">
                     {{ genre }} 
                 </li>
             </ul>
@@ -83,13 +83,13 @@
         <div :class="toggleClassAppear()" class="details-section__tv" v-else>
             <ul class="tv-actor-list" >
                 <h2>Lista Attori: </h2>
-                <li v-for="actor in maximumActors(this.store.tvActors, 5)">
+                <li v-for="actor in maximumActors(this.store.actors, 5)">
                     {{ actor }}
                 </li>
             </ul>
             <ul class="tv-genre-list">
                 <h2>Lista Generi: </h2>
-                <li v-for="genre in this.store.tvGenres">
+                <li v-for="genre in this.store.genres">
                     {{ genre }}
                 </li>
             </ul>

@@ -115,8 +115,7 @@
                 axios.get(`https://api.themoviedb.org/3/${type}/${idNumber}?api_key=${this.key}&append_to_response=credits`)
                 .then((res)=>{
 
-                    
-                    console.log("FINE LOADING...")
+                                        
                     
                     const actorsArray = [];
                     const genresArray = [];
@@ -137,13 +136,13 @@
 
                     if(type === 'movie'){                        
 
-                        this.store.filmActors = actorsArray;
-                        this.store.filmGenres = genresArray;
+                        this.store.actors = actorsArray;
+                        this.store.genres = genresArray;
                         
                     }else{
 
-                        this.store.tvActors = actorsArray;
-                        this.store.tvGenres = genresArray;                        
+                        this.store.actors = actorsArray;
+                        this.store.genres = genresArray;                        
                     }
 
                     // ora che il codice è stato eseguito fa tornare il valore di isLoading a false
