@@ -115,7 +115,9 @@
 
     .card__description{
         color: white;
+        border: 1px solid white;
         padding: 50px;
+        height: 100%;
         li{
             margin: 20px 5px;
             span{
