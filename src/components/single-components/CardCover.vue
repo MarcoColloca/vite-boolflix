@@ -35,6 +35,10 @@
 
 <style lang="scss">
 
+  img{
+    max-height: 513px;
+  }
+
   // Cover Alternativa
   .cover-section--alternative{
     background-color: transparent;

@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Icone Regular Font Awesome
 import { 
-    faStar as faStarSolid
+    faStar as faStarSolid,
+    faSpinner as faSpinnerSolid
 } from '@fortawesome/free-solid-svg-icons'
 
 // Icone Solid Font Awesome
@@ -18,7 +19,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons'
 
 
-library.add(faStarRegular, faStarSolid, faStarHalfStrokeRegular)
+library.add(faStarRegular, faStarSolid, faStarHalfStrokeRegular, faSpinnerSolid)
 const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)

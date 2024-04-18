@@ -4,6 +4,7 @@
     export default {
         props:{
             open: Boolean,
+            loading: Boolean,
         },
 
         data(){
@@ -35,6 +36,14 @@
                 return myActors
             },
 
+
+            toggleClassAppear(){
+                
+                if(this.loading === false){
+                    console.log('parto!')
+                    return 'appear'
+                }
+            }
         }
     }
 </script>
@@ -45,12 +54,17 @@
 
 <template>
     <!-- Sezione dei Dettagli-->
-    <div  class="details-section"
+    <div  class="details-section "
      v-show="open === true"
      @mouseleave="$emit('closeModal')"
-    > 
+    >
+        <!-- Sezione Loader -->
+        <div class="loader" v-show="loading === true">
+            <h1> <font-awesome-icon :icon="['fas', 'spinner']" class="spin" /> </h1>
+        </div>
+
         <!-- Sezione dei Dettagli - Lista attori del Film -->
-        <div class="details-section__film" v-if="store.currentPage.film === true">
+        <div :class="toggleClassAppear()" class="details-section__film appear" v-if="store.currentPage.film === true">
             <ul class="film-actor-list">
                 <h2>Lista Attori: </h2>
                 <li v-for="actor in maximumActors(this.store.filmActors, 5)">
@@ -67,7 +81,7 @@
 
 
         <!-- Sezione dei Dettagli - Lista attori della Serie Tv -->
-        <div class="details-section__tv" v-else>
+        <div :class="toggleClassAppear()" class="details-section__tv" v-else>
             <ul class="tv-actor-list" >
                 <h2>Lista Attori: </h2>
                 <li v-for="actor in maximumActors(this.store.tvActors, 5)">
@@ -95,12 +109,62 @@
         color: crimson;
     }
 
+
+    .spin{
+        animation-name: spin;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0);  
+        }
+        25% {
+            transform: rotate(45deg);
+        }
+        50% {
+            transform: rotate(90deg);
+        }
+        75% {
+            transform: rotate(135deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+    .appear{
+        animation-name: appear;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+    }
+
+    @keyframes appear {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
     // Sezione Dettagli
-    .details-section{
+    .details-section{        
         position: absolute;
         width: 100%;
         height: 100%;
         background-color: coral;
+        border: 2px solid rgb(255, 255, 255);
         padding: 10px 20px;
         top: 0;
         left: 0;
@@ -129,5 +193,22 @@
                 list-style: circle;
             }
         }
+
+
+        .loader{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: rgb(255, 255, 255);
+            background-color: black;
+            border: 2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
+
     }
 </style>

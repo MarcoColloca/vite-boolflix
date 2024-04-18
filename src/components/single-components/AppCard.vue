@@ -29,6 +29,7 @@
                 key: '4f9eb075064279ac9303fb02f9122eca',
                 show: false,
                 isOpen: false,
+                isLoading: false,
             }
         },
 
@@ -36,6 +37,7 @@
             /* Funzione di Debug*/
             testFunction(){
                 console.log('test')
+                console.log(this.vote)
             },
 
             /* Funzione che sfruttando un parametro (verrà poi assegnata nel template la Props 'vote'), ritorna un numero intero 
@@ -64,8 +66,10 @@
             Questa funzione viene sfruttata per stampare la mezza stella nel caso venga ritornato True. */
             hasHalfStar(propsVote){
                 const halfVote = propsVote/2
-                const roundVote = parseInt(propsVote/2)
+                const roundVote = parseInt(halfVote)
                 const result = halfVote - roundVote
+
+                // return result >= 0.5;
                 
                 if(result >= 0.5){
                     return true
@@ -99,10 +103,20 @@
             tramite questi parametri effettua una chiamata API condizionale, andando a recuperare il nome degli attori ed i generi associati ad un determinato film o serie tv.
             Va quindi a sostituire due array presenti nello store con i valori ricevuti dalla chiamata. */
             fetchDetails(idNumber, type){
-                
+                this.store.filmActors = [];
+                this.store.filmGenres = [];
+                this.store.tvActors = [];
+                this.store.tvGenres = [];
+
+                // cambia il valore del data is Loading in true
+                this.isLoading = true;
+
                 // Chiamata che restituisce gli Attori del film o della serie tv con un id specifico, va poi a popolare array vuoti presenti nello store.
                 axios.get(`https://api.themoviedb.org/3/${type}/${idNumber}?api_key=${this.key}&append_to_response=credits`)
                 .then((res)=>{
+
+                    
+                    console.log("FINE LOADING...")
                     
                     const actorsArray = [];
                     const genresArray = [];
@@ -131,7 +145,11 @@
                         this.store.tvActors = actorsArray;
                         this.store.tvGenres = genresArray;                        
                     }
+
+                    // ora che il codice è stato eseguito fa tornare il valore di isLoading a false
+                    this.isLoading = false;
                 })
+
             },
         }
 
@@ -178,14 +196,15 @@
              class="details"
              @click="this.isOpen = true, fetchDetails(cardId, cardType)"
             > 
-                Dettagli - Id: {{ cardId }}
+                Dettagli
             </li>
 
 
             <!-- Componente Card Details -->
             <CardDetails
-             :open="this.isOpen"
-             @closeModal="this.isOpen = false"
+             :open="isOpen"
+             :loading="isLoading"
+             @closeModal="isOpen = false"
             ></CardDetails>
         </ul>
     </div>
