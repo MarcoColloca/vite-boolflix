@@ -60,6 +60,7 @@
                         dell'oggetto ciclato con la direttiva v-for -->
                         <CardCover
                          :poster="film.poster_path"
+                         :originalTitle="film.original_title"
                         ></CardCover>
                     </div>                
                 </div>
@@ -98,6 +99,7 @@
                         dell'oggetto ciclato con la direttiva v-for -->    
                         <CardCover
                          :poster="tv.poster_path"
+                         :originalTitle="film.original_title"
                         ></CardCover>
                     </div>
                 </div>

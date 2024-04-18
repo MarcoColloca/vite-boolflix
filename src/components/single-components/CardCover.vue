@@ -5,6 +5,7 @@
 
     props:{
       poster: String,
+      originalTitle: String,
     },
 
     data(){
@@ -27,7 +28,8 @@
   
   <!-- Sezione alternativa della Cover (nel caso non ci sia l'immagine di copertina)-->
   <div class="cover-section--alternative" v-else>
-    <h2> No Cover</h2>
+    <h2>{{ originalTitle }}</h2>
+    <h3> No Cover</h3>
   </div>
 </template>
 
@@ -40,11 +42,19 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    h2{
+    justify-content: flex-start;
+    h2, h3{
       color: white;
-      margin-top: -200px;
+    }
+    h2{
+      margin: 20px 20px;
+      padding-bottom: 35%; 
+      font-size: 18px;
+    }
+    h3{
+      font-size: 30px;
     }
   }
 </style>
