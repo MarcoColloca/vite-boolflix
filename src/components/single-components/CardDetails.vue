@@ -95,7 +95,9 @@
             </ul>
 
         </div>
-        <span class="close-modal" @click="$emit('closeModal')">X</span>
+
+        <!-- icona che permette di chiudere il modale -->
+        <span class="close-modal" @click="$emit('closeModal')"><font-awesome-icon :icon="['fas', 'x']" /></span>
     </div>
 </template>
 
@@ -174,10 +176,6 @@
             right: 10px;
             font-size: 24px;
             cursor: pointer;
-            &:hover{
-                text-decoration: underline;
-                font-weight: bolder;
-            }
         }
         
         .tv-genre-list,
