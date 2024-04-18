@@ -14,7 +14,11 @@
         },
 
         methods:{
-            printActors(array){
+
+            /* Funzione riceve due parametri, un array ed un numero. Da questi parametri fornisce un nuovo array che
+            contiene gli stessi elementi del primo, ma la cui lunghezza massima è quella impostata dal secondo parametro.
+            Viene usato per decidere il numero massimo di attori che verranno stampati in pagina nel template. */
+            maximumActors(array, maxLength){
 
                 let myActors = []
 
@@ -24,8 +28,8 @@
                     myActors.push(actor)
                 }
                 
-                if(myActors.length > 5){
-                    myActors.length = 5
+                if(myActors.length > maxLength){
+                    myActors.length = maxLength
                 }
 
                 return myActors
@@ -40,18 +44,23 @@
 
 
 <template>
+    <!-- Sezione dei Dettagli-->
     <div  class="details-section"
      v-show="open === true"
      @mouseleave="$emit('closeModal')"
-    >
+    > 
+        <h1>Lista attori:</h1>
+        <!-- Sezione dei Dettagli - Lista attori del Film -->
         <ul class="film-actor-list" v-if="store.currentPage.film === true">
-            <li v-for="actor in printActors(this.store.filmActors)">
+            <li v-for="actor in maximumActors(this.store.filmActors, 5)">
                 {{ actor }}
             </li>
         </ul>
 
+        <!-- Sezione dei Dettagli - Lista attori della Serie Tv -->
+        
         <ul class="film-actor-list" v-else>
-            <li v-for="actor in printActors(this.store.tvActors)">
+            <li v-for="actor in maximumActors(this.store.tvActors, 5)">
                 {{ actor }}
             </li>
         </ul>
@@ -74,6 +83,7 @@
         width: 100%;
         height: 100%;
         background-color: coral;
+        padding: 10px 20px;
         top: 0;
         left: 0;
         .close-modal{
