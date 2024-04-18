@@ -20,16 +20,20 @@
 </script>
 
 <template>
+  <!-- Sezione della Cover -->
   <div class="cover-section" v-if="poster !== null">
     <img :src="posterUrl + sizeStandard + poster" alt="">    
   </div>
   
+  <!-- Sezione alternativa della Cover (nel caso non ci sia l'immagine di copertina)-->
   <div class="cover-section--alternative" v-else>
     <h2> No Cover</h2>
   </div>
 </template>
 
 <style lang="scss">
+
+  // Cover Alternativa
   .cover-section--alternative{
     background-color: transparent;
     border: 2px solid white;

@@ -27,12 +27,10 @@
       }
     },
 
-    mounted(){
-      
-    },
-
 
     methods: {
+      /* funzione che recupera i dati relativi a film e serie tv, in base alla value della barra di ricerca, 
+      la chiamata parte quando viene premuto invio o il pulsante "Cerca", andando a popolare due array presenti nello store.*/
       fetchData(){       
 
         const promise1 = axios.get('https://api.themoviedb.org/3/search/movie',{
@@ -63,6 +61,7 @@
         })
       },
       
+      /* Funzione di debug */
       testFunction(){
         console.log('test')
       }
@@ -73,11 +72,12 @@
 
 
 <template>
-
+  <!-- Componente dell'Header in cui viene utilizzata la funzione fetchData() -->
   <AppHeader
    @search="fetchData()"
   ></AppHeader>
   
+  <!-- Componente che corrispodne al contenuto della pagina, ovvero il componente in cui vengono stampate le card di film e serie tv. -->
   <AppContent></AppContent>
 
 </template>
@@ -85,7 +85,4 @@
 
 
 <style lang="scss">
-  h1{
-    color: white;
-  }
 </style>
