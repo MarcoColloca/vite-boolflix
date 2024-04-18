@@ -1,7 +1,15 @@
 <script>
     import { store } from '../../store';
 
+    /* Componenti Importati */
+    import CardDetails from './CardDetails.vue'
+
     export default{
+
+        components: {
+            CardDetails,
+        },
+        
         props:{
             title: String,
             originalTitle: String,
@@ -10,12 +18,13 @@
             vote: Number,
             cardIndex: Number,
         },
-
+    
         data(){
             return{
                 test: 'Hello!',
                 store,
                 show: false,
+                isOpen: false,
             }
         },
 
@@ -77,6 +86,10 @@
                 this.show = !this.show    
             },
 
+            /* Funzione di Debug*/
+            testFunction(){
+                console.log('test')
+            },
         }
 
     }
@@ -117,6 +130,19 @@
                     <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="star in getEmptyStars(vote)"/>
                 </span>                
             </li>
+            <!-- Sezione della Card - Descrizione - Dettagli -->
+            <li 
+             class="details"
+             @click="this.isOpen = true"
+            > 
+                Dettagli 
+            </li>
+
+
+            <!-- Componente Card Details -->
+            <CardDetails
+             :open="this.isOpen"
+            ></CardDetails>
         </ul>
     </div>
 
@@ -157,4 +183,15 @@
         }
     }
 
+    // Dettagli Card
+    .details{
+        color: coral;
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    
 </style>
