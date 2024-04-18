@@ -95,6 +95,9 @@
                 this.show = !this.show    
             },
 
+            /* Questa funzione riceve duve parametri, il primo corrisponde all'id del film/serie tv corrente, il secondo corrisponde al suo tipo (se è un film o una serie tv)
+            tramite questi parametri effettua una chiamata API condizionale, andando a recuperare il nome degli attori ed i generi associati ad un determinato film o serie tv.
+            Va quindi a sostituire due array presenti nello store con i valori ricevuti dalla chiamata. */
             fetchDetails(idNumber, type){
                 
                 // Chiamata che restituisce gli Attori del film o della serie tv con un id specifico, va poi a popolare array vuoti presenti nello store.
