@@ -96,32 +96,37 @@
             },
 
             fetchDetails(idNumber, type){
+                
                 // Chiamata che restituisce gli Attori del film o della serie tv con un id specifico, va poi a popolare array vuoti presenti nello store.
-                axios.get(`https://api.themoviedb.org/3/${type}/${idNumber}/credits`,{
-                    params:{
-                        api_key: this.key
-                    }
-                })
+                axios.get(`https://api.themoviedb.org/3/${type}/${idNumber}?api_key=${this.key}&append_to_response=credits`)
                 .then((res)=>{
                     
                     const actorsArray = [];
+                    const genresArray = [];
+                                        
+                    const actors = res.data.credits.cast;
+                    const genres = res.data.genres;
+                    
 
-                    
-                    const actors = res.data.cast
-                    
                     for(let i = 0; i < actors.length; i++){                                                 
 
-                        actorsArray.push(actors[i].name)
+                        actorsArray.push(actors[i].name);
                     }
-                    
+
+                    for(let j = 0; j < genres.length; j++){
+                         genresArray.push(genres[j].name);
+                   }
+                                        
+
                     if(type === 'movie'){                        
 
                         this.store.filmActors = actorsArray;
+                        this.store.filmGenres = genresArray;
                         
                     }else{
 
                         this.store.tvActors = actorsArray;
-                        
+                        this.store.tvGenres = genresArray;                        
                     }
                 })
             },

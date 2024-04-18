@@ -56,7 +56,7 @@
           this.store.filmList = results[0].data.results;
           this.store.tvList = results[1].data.results;
           
-          console.log(this.store.filmList);
+          //console.log(this.store.filmList);
           //console.log(this.store.tvList);
         })
       },

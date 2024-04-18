@@ -49,21 +49,39 @@
      v-show="open === true"
      @mouseleave="$emit('closeModal')"
     > 
-        <h1>Lista attori:</h1>
+        <h1>Dettagli:</h1>
         <!-- Sezione dei Dettagli - Lista attori del Film -->
-        <ul class="film-actor-list" v-if="store.currentPage.film === true">
-            <li v-for="actor in maximumActors(this.store.filmActors, 5)">
-                {{ actor }}
-            </li>
-        </ul>
+        <div class="details-section__film" v-if="store.currentPage.film === true">
+            <h2>Lista Attori: </h2>
+            <ul class="film-actor-list">
+                <li v-for="actor in maximumActors(this.store.filmActors, 5)">
+                    {{ actor }}
+                </li>
+            </ul>
+            <h2>Lista Generi: </h2>
+            <ul class="film-genre-list">
+                <li v-for="genre in this.store.filmGenres">
+                    {{ genre }}, 
+                </li>
+            </ul>
+        </div>
+
 
         <!-- Sezione dei Dettagli - Lista attori della Serie Tv -->
-        
-        <ul class="film-actor-list" v-else>
-            <li v-for="actor in maximumActors(this.store.tvActors, 5)">
-                {{ actor }}
-            </li>
-        </ul>
+        <div class="details-section__tv" v-else>
+            <ul class="tv-actor-list" >
+                <li v-for="actor in maximumActors(this.store.tvActors, 5)">
+                    {{ actor }}
+                </li>
+            </ul>
+            <h2>Lista Generi: </h2>
+            <ul class="tv-genre-list">
+                <li v-for="genre in this.store.tvGenres">
+                    {{ genre }}, 
+                </li>
+            </ul>
+
+        </div>
         <span class="close-modal" @click="$emit('closeModal')">X</span>
     </div>
 </template>
