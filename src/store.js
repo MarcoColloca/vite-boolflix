@@ -7,6 +7,7 @@ export const store = reactive({
     currentPage: {
         film: true,
         tv: false,
-    }
-
+    },
+    filmActors: [],
+    tvActors:[]
 })

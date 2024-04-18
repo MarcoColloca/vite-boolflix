@@ -1,5 +1,6 @@
 <script>
     import { store } from '../../store';
+    import axios from 'axios';
 
     /* Componenti Importati */
     import CardDetails from './CardDetails.vue'
@@ -17,18 +18,26 @@
             languagesSrc: Array,
             vote: Number,
             cardIndex: Number,
+            cardId: Number,
+            cardType: String,
         },
     
         data(){
             return{
                 test: 'Hello!',
                 store,
+                key: '4f9eb075064279ac9303fb02f9122eca',
                 show: false,
                 isOpen: false,
             }
         },
 
         methods:{
+            /* Funzione di Debug*/
+            testFunction(){
+                console.log('test')
+            },
+
             /* Funzione che sfruttando un parametro (verrà poi assegnata nel template la Props 'vote'), ritorna un numero intero 
             arrotondato per difetto che viene utilizzato  per stampare in pagina le stelle piene corrispondenti al voto misurato
             in quinti */ 
@@ -86,9 +95,35 @@
                 this.show = !this.show    
             },
 
-            /* Funzione di Debug*/
-            testFunction(){
-                console.log('test')
+            fetchDetails(idNumber, type){
+                // Chiamata che restituisce gli Attori del film o della serie tv con un id specifico, va poi a popolare array vuoti presenti nello store.
+                axios.get(`https://api.themoviedb.org/3/${type}/${idNumber}/credits`,{
+                    params:{
+                        api_key: this.key
+                    }
+                })
+                .then((res)=>{
+                    
+                    const actorsArray = [];
+
+                    
+                    const actors = res.data.cast
+                    
+                    for(let i = 0; i < actors.length; i++){                                                 
+
+                        actorsArray.push(actors[i].name)
+                    }
+                    
+                    if(type === 'movie'){                        
+
+                        this.store.filmActors = actorsArray;
+                        
+                    }else{
+
+                        this.store.tvActors = actorsArray;
+                        
+                    }
+                })
             },
         }
 
@@ -133,9 +168,9 @@
             <!-- Sezione della Card - Descrizione - Dettagli -->
             <li 
              class="details"
-             @click="this.isOpen = true"
+             @click="this.isOpen = true, fetchDetails(cardId, cardType)"
             > 
-                Dettagli 
+                Dettagli - Id: {{ cardId }}
             </li>
 
 

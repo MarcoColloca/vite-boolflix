@@ -54,6 +54,8 @@
                          :languagesSrc="this.languagesSrc"
                          :vote="film.vote_average"
                          :cardIndex="i"
+                         :cardId="film.id"
+                         :cardType="'movie'"
                         ></AppCard>
     
                         <!-- Componente CardCover, passa i dati richiesti relative alle props, facendo riferimento ai dati
@@ -93,13 +95,15 @@
                          :languagesSrc="this.languagesSrc"
                          :vote="tv.vote_average"
                          :cardIndex="i"
+                         :cardId="tv.id"
+                         :cardType="'tv'"
                         ></AppCard>
     
                         <!-- Componente CardCover, passa i dati richiesti relative alle props, facendo riferimento ai dati
                         dell'oggetto ciclato con la direttiva v-for -->    
                         <CardCover
                          :poster="tv.poster_path"
-                         :originalTitle="film.original_title"
+                         :originalTitle="tv.original_title"
                         ></CardCover>
                     </div>
                 </div>
@@ -113,6 +117,7 @@
     // Righe delle sezioni film e serie tv
     .film-section,
     .tv-section{
+        padding-bottom: 100px;
         .row{
             row-gap: 100px;
         }
