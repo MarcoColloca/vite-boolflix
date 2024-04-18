@@ -40,7 +40,6 @@
             toggleClassAppear(){
                 
                 if(this.loading === false){
-                    console.log('parto!')
                     return 'appear'
                 }
             }
@@ -200,7 +199,7 @@
             top: 0;
             left: 0;
             color: rgb(255, 255, 255);
-            background-color: black;
+            background-color: coral;
             border: 2px solid white;
             display: flex;
             justify-content: center;
