@@ -103,7 +103,7 @@
                         dell'oggetto ciclato con la direttiva v-for -->    
                         <CardCover
                          :poster="tv.poster_path"
-                         :originalTitle="tv.original_title"
+                         :originalTitle="tv.original_name"
                         ></CardCover>
                     </div>
                 </div>
