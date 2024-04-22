@@ -105,8 +105,8 @@
             fetchDetails(idNumber, type){
                 this.store.filmActors = [];
                 this.store.filmGenres = [];
-                this.store.tvActors = [];
-                this.store.tvGenres = [];
+                this.store.actors = [];
+                this.store.genres = [];
 
                 // cambia il valore del data is Loading in true
                 this.isLoading = true;
